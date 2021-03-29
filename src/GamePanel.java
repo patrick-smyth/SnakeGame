@@ -72,8 +72,8 @@ public class GamePanel extends JPanel implements ActionListener {
     }
 
     public void newApple() {
-        appleX = random.nextInt((int)(SCREEN_WIDTH/UNIT_SIZE)) * UNIT_SIZE;
-        appleY = random.nextInt((int)(SCREEN_HEIGHT/UNIT_SIZE)) * UNIT_SIZE;
+        appleX = random.nextInt((SCREEN_WIDTH/UNIT_SIZE)) * UNIT_SIZE;
+        appleY = random.nextInt((SCREEN_HEIGHT/UNIT_SIZE)) * UNIT_SIZE;
     }
 
     public void move() {
@@ -109,7 +109,10 @@ public class GamePanel extends JPanel implements ActionListener {
     public void checkCollisions() {
         // Check if head collides with body
         for(int i = bodyParts; i > 0; i--) {
-            if((x[0] == x[i]) && (y[0] == y[i])) gameRunning = false;
+            if ((x[0] == x[i]) && (y[0] == y[i])) {
+                gameRunning = false;
+                break;
+            }
         }
 
         // Check if head collides with left border
